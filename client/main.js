@@ -4,7 +4,6 @@ import {
 
 import './main.html';
 
-
 Template.login.events({
     'click #facebook-login': function(event) {
         Meteor.loginWithFacebook({}, function(err) {
