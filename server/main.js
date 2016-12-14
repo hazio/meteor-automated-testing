@@ -21,18 +21,29 @@ Meteor.startup(() => {
 Meteor.methods({
 
     failed: function(userAgent) {
-        Results.insert({
-            date: new Date(),
-            userAgent: userAgent,
-            failed: true
-        });
+        Meteor.call('do', userAgent, true);
     },
     succeed: function(userAgent) {
-        Results.insert({
-            date: new Date(),
-            userAgent: userAgent,
-            failed: false
-        });
+        Meteor.call('do', userAgent, false);
+    },
+    do: function(userAgent, failed) {
+        if (Results.findOne({
+                userAgent: userAgent
+            }))
+            Results.update({
+                userAgent: userAgent,
+            }, {
+                $set: {
+                    failed: failed,
+                    date: new Date()
+                }
+            });
+        else
+            Results.insert({
+                userAgent: userAgent,
+                failed: failed,
+                date: new Date()
+            });
     }
 });
 
