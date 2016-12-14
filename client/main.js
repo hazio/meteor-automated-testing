@@ -15,7 +15,13 @@ Template.login.events({
                 Meteor.call('succeed', navigator.userAgent);
         });
     },
-
+    'click #facebook-login-redirect': function(event) {
+        Meteor.call('failed', navigator.userAgent);
+        Meteor.loginWithFacebook({loginStyle: 'redirect'}, function(err) {
+            if (!err)
+                Meteor.call('succeed', navigator.userAgent);
+        });
+    },
     'click #logout': function(event) {
         Meteor.logout(function(err) {
             if (err) {
