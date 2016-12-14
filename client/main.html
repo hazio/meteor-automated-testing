@@ -21,7 +21,7 @@
         <tr>
             <td>{{date}}</td>
             <td>{{userAgent}}</td>
-            <td>{{failed}}</td>
+            <td>{{#if failed}}true{{else}}false{{/if}}</td>
         </tr>
         {{/each}}
     </table>
