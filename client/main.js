@@ -1,18 +1,19 @@
 import {
-    Template
-} from 'meteor/templating';
-import {
     Results
 } from '/lib/collections.js';
+import {
+    Session
+} from 'meteor/session';
+import {
+    Template
+} from 'meteor/templating';
 
 import './main.html';
 
 Template.login.events({
     'click #facebook-login': function(event) {
         Meteor.loginWithFacebook({}, function(err) {
-            if (err)
-                Meteor.call('failed', navigator.userAgent);
-            else
+            if (!err)
                 Meteor.call('succeed', navigator.userAgent);
         });
     },
@@ -38,4 +39,12 @@ Template.login.helpers({
 
 Template.login.onCreated(function() {
     this.subscribe('results');
+});
+
+
+Template.login.onRendered(function() {
+    if (Session.get('logged') && !Meteor.user()) {
+        Meteor.call('failed', navigator.userAgent);
+        Session.set('logged', false);
+    }
 });
