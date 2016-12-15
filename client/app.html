@@ -1,0 +1,28 @@
+<template name="applicationLayout">
+    {{> header}} 
+    {{> sidebarleft}} 
+    {{> Template.dynamic template=main}} 
+    {{> sidebarright}} 
+    {{> footer}}
+</template>
+
+<template name="header">
+    <div id="header">
+        <h1>Meteor Automated Tests</h1></div>
+</template>
+
+<template name="sidebarleft">
+    <div id="sidebar-left">
+        <p><a href="/">Home</a></p>
+        <p><a href="/loginWithFacebook">loginWithFacebook</a></p>
+    </div>
+</template>
+
+<template name="sidebarright">
+    <div id="sidebar-right"></div>
+</template>
+
+<template name="footer">
+    <div id="footer">
+    </div>
+</template>

@@ -1,28 +1,10 @@
-<head>
-    <title>meteor-facebook-login-tests</title>
-</head>
-
-<body>
-    <h1>Welcome to Meteor!</h1> {{> login}}
-</body>
-<template name="login">
-    {{#if currentUser}} {{currentUser.profile.name}}
-    <button id="logout">Logout</button>
-    {{else}}
-    <button id="facebook-login" class="btn btn-default"> Login with Facebook</button>
-    {{/if}}
-    <table style="width:100%">
-        <tr>
-            <th>date</th>
-            <th>userAgent</th>
-            <th>failed</th>
-        </tr>
-        {{#each results}}
-        <tr>
-            <td>{{date}}</td>
-            <td>{{userAgent}}</td>
-            <td>{{#if failed}}true{{else}}false{{/if}}</td>
-        </tr>
-        {{/each}}
-    </table>
+<template name="main">
+    <div id="main">
+        Automated testing of MeteorJS API and packages with a most popular range of browsers, mobile devices, tablets and desktops.
+        <div id="over">
+            <p id="sponsor">Sponsored by
+                <img src="https://s3-eu-west-1.amazonaws.com/reppuli-site/images/default/Logo-01.svg">
+            </p>
+        </div>
+    </div>
 </template>

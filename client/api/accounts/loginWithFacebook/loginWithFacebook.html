@@ -1,0 +1,21 @@
+<template name="loginWithFacebook">
+    {{#if currentUser}} {{currentUser.profile.name}}
+    <button id="logout">Logout</button>
+    {{else}}
+    <button id="facebook-login" class="btn btn-default"> Login with Facebook</button>
+    {{/if}}
+    <table>
+        <tr>
+            <th>date</th>
+            <th>userAgent</th>
+            <th>failed</th>
+        </tr>
+        {{#each results}}
+        <tr>
+            <td>{{date}}</td>
+            <td>{{userAgent}}</td>
+            <td>{{#if failed}}true{{else}}false{{/if}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</template>
